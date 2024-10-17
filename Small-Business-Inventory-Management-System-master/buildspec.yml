@@ -1,0 +1,31 @@
+
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing project dependencies..."
+      - npm install
+      - echo "Installing global dependencies..."
+      - npm install -g truffle
+      - npm install -g web3
+      - echo "Installing HDWallet Provider..."
+      - npm install @truffle/hdwallet-provider
+  pre_build:
+    commands:
+      - echo "Compiling contract..."
+      - truffle compile
+  build:
+    commands:
+      - echo "Migrating contract to Sepolia..."
+      - truffle migrate --network sepolia
+      - echo "Copying contract artifact to src..."
+      - cp build/contracts/SmallBusinessInventory.json my-app/src/
+  post_build:
+    commands:
+      - echo "Navigating to React app directory..."
+      - cd my-app/src
+      - echo "Installing React app dependencies..."
+      - npm install
+      - echo "Starting React app..."
+      - npm start

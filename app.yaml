@@ -1,0 +1,14 @@
+runtime: nodejs20
+instance_class: F2
+
+handlers:
+  - url: /.*
+    secure: always
+    script: auto
+
+env_variables:
+  NODE_ENV: production
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_aG90LXBpZ2xldC05Ni5jbGVyay5hY2NvdW50cy5kZXYk
+  CLERK_SECRET_KEY: sk_test_CmOBtc4AUuPmJFKMTBNETsJZM6jFSjTOTvML0iJhcL
+  SERVER_URL: https://fruit-tree-detection-yolov9-6486616464.us-central1.run.app
+  IDENTITY_TOKEN: 537875hjfyruyr8758
